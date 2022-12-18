@@ -1,41 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Ciferblat.ViewModel"
              x:Class="Ciferblat.MainPage">
-
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+    
+    <ContentPage.BindingContext>
+        <vm:CiferblatViewModel />
+    </ContentPage.BindingContext>
+    
+    
+    
+    
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Label Text="{Binding Text}" />
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            
+            <Button Grid.Row="0" Grid.Column="0" Text="1" />
+            <Button Grid.Row="0" Grid.Column="1" Text="2" />
+            <Button Grid.Row="0" Grid.Column="2" Text="3" />
+        
+            <Button Grid.Row="1" Grid.Column="0" Text="4" />
+            <Button Grid.Row="1" Grid.Column="1" Text="5" />
+            <Button Grid.Row="1" Grid.Column="2" Text="6" />
+        
+            <Button Grid.Row="2" Grid.Column="0" Text="7" />
+            <Button Grid.Row="2" Grid.Column="1" Text="8" />
+            <Button Grid.Row="2" Grid.Column="2" Text="9" />
+        
+            <Button Grid.Row="3" Grid.Column="0" Text="X" Command="{Binding ClearAllCommand}"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="0" />
+            <Button Grid.Row="3" Grid.Column="2" Text="OK" Command="{Binding CheckPassCommand}" />
+        </Grid>
+        
+    </Grid>
 
 </ContentPage>
